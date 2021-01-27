@@ -1,0 +1,56 @@
+{
+  "name": "@fenum/vesting",
+  "version": "1.0.0",
+  "description": "FENUM Vesting",
+  "keywords": [
+    "ethereum",
+    "fenum",
+    "erc20",
+    "token",
+    "vesting"
+  ],
+  "author": {
+    "name": "FENUM",
+    "email": "support@fenum.io",
+    "url": "https://fenum.io/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fenum/fenum-vesting#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fenum/fenum-vesting"
+  },
+  "bugs": {
+    "url": "https://github.com/fenum/fenum-vesting/issues",
+    "email": "support@fenum.io"
+  },
+  "scripts": {
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "compile": "truffle compile",
+    "postcompile": "yarn run zip-dir ./build compiled",
+    "pretest": "yarn compile",
+    "test": "truffle test",
+    "predeploy": "yarn compile",
+    "deploy": "truffle migrations --network",
+    "postdeploy": "yarn run zip-dir . deployed",
+    "verify": "truffle run verify --network",
+    "prepublishOnly": "yarn test",
+    "postpublishOnly": "yarn run zip-dir . published",
+    "ganache-cli": "ganache-cli",
+    "mnemonic": "mnemonics",
+    "zip-dir": "node ./scripts/zip-dir.js"
+  },
+  "files": [
+    "contracts",
+    "build"
+  ],
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.2.1",
+    "ganache-cli": "^6.12.2",
+    "rimraf": "^3.0.2",
+    "truffle": "^5.1.63",
+    "truffle-plugin-verify": "^0.5.4",
+    "zip-dir": "^2.0.0"
+  }
+}
